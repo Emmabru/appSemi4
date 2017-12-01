@@ -1,0 +1,328 @@
+/* Downloaded from http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/ */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+
+/* remember to define focus styles! */
+/* 
+    colors  46211A darkest. brown red
+            693D3D lighter brown purple
+            BA5536  orangei
+            A43820 Redy
+            FFFFFF white
+*/
+:focus {
+    outline: 0;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: "";
+}
+
+blockquote, q {
+    quotes: "" "";
+}
+
+header {
+    padding: 1em;
+    color: #693D3D;
+    background-color: whitesmoke;
+    clear: left;
+    text-align: left;
+    font-size: 0.8em;
+}
+
+
+body {
+    background: #BA5536;
+    text-align: center;
+    padding: 1em;
+    font-family: quicksand;
+}
+
+/*headline on site*/
+h1 {
+    font-size: 3em;
+    color: #46211A;
+    font-family: quicksand;
+    padding: 15px;
+}
+
+/*recipename, calender ..*/
+h2 {
+    font-size: 1.5em;
+    color: #693D3D; 
+    margin-top: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/*headlines in sections, text-headlines*/
+h3 {
+    font-size: 1em;
+    color: #693D3D; 
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+/* subheadline to pages, breadtext*/
+p {
+    font-size: 0.9em;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    line-height: 20px;
+}
+
+ul {
+    font-family: quicksand; 
+}
+
+.menu {
+    margin: 0 auto;
+    margin-top: 3%;
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+/* Bygg om till responsive
+https://www.w3schools.com/css/tryit.asp?filename=trycss_navbar_horizontal_responsive */
+.menu a{
+    color: white;
+    padding: 14px 15px;
+    text-decoration: none;
+}
+.menu li {
+    float: left;
+}
+
+li a:hover {
+    background-color: #A43820;
+}
+li a:hover:not(.active) {
+  
+}
+
+.active {
+    background-color: #A43820;
+}
+
+
+section{
+    width: 80%;
+    margin: auto;
+    margin-top: 10%;
+    margin-right: 10%;
+    padding: 2%;
+    overflow: hidden;
+    background-color:  white;
+    border: 3px solid #A43820;
+    border-radius: 30px;
+    text-align: justify;
+}
+
+
+/* RECIPE SITE START *************************/
+.recipe-top-section{
+    margin-left: 5%;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+     
+}
+/* Ingredients list element*/
+.ingredienser{
+    float: left;
+    width: 38%;
+    color: #46211A;
+    text-align: left;
+    font-size: 0.95em;
+    padding-right: 20px;
+}
+
+.meal-pic {
+    width: 100%;
+    height: auto;
+}
+
+.recipe-description {
+    width: 100%;
+}
+
+.recipe-description{
+    padding: 40px;
+    width: inherit;
+}
+
+.comments_section {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    width: inherit;
+}
+
+
+
+/* RECIPE SITE*********************STOP*/
+
+/* CALENDAR START----------------------------------*/
+ul {list-style-type: none;}
+
+.calDesc {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+/* Month header */
+.month {
+    padding: 10px 25px;
+    background: #46211A;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+/* Month list */
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+
+.month ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    
+}
+
+/* Previous button inside month header */
+.month .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+/* Next button */
+.month .next {
+    float: right;
+    padding-top: 10px;
+}
+
+/* Year-text*/
+.year {
+    font-size: 18px;   
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays { 
+    padding: 10px 25px;
+    background-color:#A43820;
+    width: 80%;
+    margin: auto;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 13.7%;
+    color: #46211A;
+    text-align: center;
+}
+
+/* Days (1-31) */
+.days {
+    padding: 10px 25px;;
+    background: whitesmoke;
+    margin: auto;
+    width: 80%;
+}
+
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 12%;
+    height: 50px;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size:12px;
+    color:#46211A;
+    border: 1px solid;
+}
+
+/* Highlight the "current" day */
+.days li .active {
+    padding: 10%;
+    background: #A43820;
+    color: white !important
+}
+.calendPic {
+    height: 60%;
+    width: auto;
+    display: flex;
+    margin-left: 10%;
+}
+
+/* CALENDAR ----------------------------------STOP*/
+
+/*login..........................................START*/
+form h3 {
+    text-align: center;
+}
+
+input[type=submit] {
+    font-family: quicksand;
+    background-color: #BA5536;
+    width: 10%;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px;
+    border: none;
+    border-radius: 4px;
+    
+}
+input[type=submit]:hover {
+    background-color: #A43820;
+    color: white;
+}
+
+input[type=submit][class=delete] {
+    font-family: quicksand;
+    text-decoration: bold;
+    font-size: 0.8em;
+    background-color: #693D3D;
+    width: 7%;
+    float:right;
+    color: white;
+    padding: 4px 1px;
+    margin: 10px 0px 0px 20px;
+    border: none;
+    border-radius: 4px;
+}
