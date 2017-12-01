@@ -1,8 +1,9 @@
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Emma</title>
-<link rel="stylesheet" type="text/css" href="/seminar-3/resources/css/reset.css">
+<link href="/seminar-3/resources/css/reset.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -10,6 +11,7 @@
 <h1>Tasty recipe</h1>
 <p> All in one bite</p>
 
+<link href="/seminar-3/resources/css/reset.css" rel="stylesheet" type="text/css">
 
 <div class="menu">
 	<nav>
@@ -21,20 +23,14 @@
 	  <li><a href="/seminar-3/tastyRep3/View/Login">Login</a></li>
 	</ul>
 	</nav>
-
 </div>
 
 <section>
-	<h2>Login</h2>
+	<h2>WELCOME</h2>
 	<p>
-		<form action="login.php" method='post'>
-           	<h3> State your name and password: </h3>
-       		<section>
-                <input type="text" id="username" name="username" type="usernme" />
-                <input type="text" id="password" name="password" type="password" />               
-                <input type="submit" value="Login"/>
-            </section> 
-        </form>
+		So far you can only find two recipies. Fret not! More will come. Please do take a look at the calendar i which you can find what to cook every other special date!
+
+		CLICK ON THE CALENDAR-LINK ABOVE!!
  </p>
 </section>
 

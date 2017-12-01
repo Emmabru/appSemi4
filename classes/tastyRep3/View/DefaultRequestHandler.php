@@ -1,9 +1,9 @@
 <?php
 
-namespace TastyRecipes\View;
+namespace tastyRep3\View;
 
 use Id1354fw\View\AbstractRequestHandler;
-use TastyRep\Controller\Controller;
+//use TastyRep\Controller\Controller;
 //use TastyRep\Util\Constants;
 
 /**
@@ -15,8 +15,11 @@ use TastyRep\Controller\Controller;
  */
 class DefaultRequestHandler extends AbstractRequestHandler {
 
+	//public function setSomeParam($value);
+
     protected function doExecute() {
 
-        \header('Location: /id1354-fw-version4/TastyRecipes/View/first');
+
+        \header('Location: /seminar-3/tastyRep3/View/FirstPage');
     }
 }

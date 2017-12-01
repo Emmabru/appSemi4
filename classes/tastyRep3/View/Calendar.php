@@ -1,12 +1,13 @@
 <?php
-namespace tastyRep\View;
+namespace tastyRep3\View;
 
 use Id1354fw\View\AbstractRequestHandler;
 /*
  * Shows the index page of the application
  */
-class FirstPage extends AbstractRequestHandler {
+
+class Calendar extends AbstractRequestHandler {
     protected function doExecute() {
-        return 'index';
+        return 'calendar';
     }
 }

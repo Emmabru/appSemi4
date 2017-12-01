@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Emma</title>
-<link rel="stylesheet" type="text/css" href="reset.css">
+<link rel="stylesheet" type="text/css" href="/seminar-3/resources/css/reset.css">
 
 </head>
 
@@ -15,11 +15,11 @@
 <div class="menu">
 	<nav>
 	 <ul>
-	  <li><a href="index.html">Home</a></li>
-	  <li><a href="recipe.html">Pancakes</a></li>
-	  <li><a href="recipe2.html">Meatballs</a></li>
-	  <li><a class="active" href="calendar.html">Calendar</a></li>
-	  <li><a href="login-page.php">Login</a></li>
+	  <li><a class="active" href="/seminar-3/tastyRep3/View/FirstPage">Home</a></li>
+	  <li><a href="/seminar-3/tastyRep3/View/Pancakes">Pancakes</a></li>
+	  <li><a href="/seminar-3/tastyRep3/View/Meatballs">Meatballs</a></li>
+	  <li><a href="/seminar-3/tastyRep3/View/Calendar">Calendar</a></li>
+	  <li><a href="/seminar-3/tastyRep3/View/Login">Login</a></li>
 	</ul>
 	</nav>
 </div>
