@@ -28,14 +28,14 @@
 <section>
 	<h2>Login</h2>
 	<p>
-		<form action="/seminar-3/tastyRep3/controller/login_control" method='post'>
+		<form action='Login_view' method='post'>
            	<h3> State your name and password: </h3>
        		<section>
                 <input type="text" id="username" name="username" type="usernme" />
                 <input type="text" id="password" name="password" type="password" />               
                 <input type="submit" value="Login"/>
             </section> 
-        
+        </form>
  </p>
 </section>
 
