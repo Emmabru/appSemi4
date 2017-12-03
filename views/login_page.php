@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -18,7 +19,7 @@
 	  <li><a href="/seminar-3/tastyRep3/View/Pancakes">Pancakes</a></li>
 	  <li><a href="/seminar-3/tastyRep3/View/Meatballs">Meatballs</a></li>
 	  <li><a href="/seminar-3/tastyRep3/View/Calendar">Calendar</a></li>
-	  <li><a href="/seminar-3/tastyRep3/View/Login">Login</a></li>
+	  <li><a href="/seminar-3/tastyRep3/View/Login_view">Login</a></li>
 	</ul>
 	</nav>
 
@@ -27,14 +28,14 @@
 <section>
 	<h2>Login</h2>
 	<p>
-		<form action="login.php" method='post'>
+		<form action="/seminar-3/tastyRep3/controller/login_control" method='post'>
            	<h3> State your name and password: </h3>
        		<section>
                 <input type="text" id="username" name="username" type="usernme" />
                 <input type="text" id="password" name="password" type="password" />               
                 <input type="submit" value="Login"/>
             </section> 
-        </form>
+        
  </p>
 </section>
 

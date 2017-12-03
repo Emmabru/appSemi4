@@ -18,7 +18,7 @@
 	  <li><a href="/seminar-3/tastyRep3/View/Pancakes">Pancakes</a></li>
 	  <li><a href="/seminar-3/tastyRep3/View/Meatballs">Meatballs</a></li>
 	  <li><a href="/seminar-3/tastyRep3/View/Calendar">Calendar</a></li>
-	  <li><a href="/seminar-3/tastyRep3/View/Login">Login</a></li>
+	  <li><a href="/seminar-3/tastyRep3/View/Login_view">Login</a></li>
 	</ul>
 	</nav>
 
@@ -44,7 +44,7 @@
 		</div>
 
 		<div class="meal-pic" >
-			<img src="kottbullar.jpg" alt="Meatballs" style="width:50%; height:50%;"> 
+			<img src="/seminar-3/resources/images/kottbullar.jpg" alt="Meatballs" style="width:50%; height:50%;"> 
 		</div>
 	</div>
 

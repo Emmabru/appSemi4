@@ -1,7 +1,5 @@
 <?php
-   
-   	session_start();
-   	include("dbconfig.php");
+namespace tastyRep3\Controller;
 
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {

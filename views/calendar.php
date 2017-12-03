@@ -19,7 +19,7 @@
 	  <li><a href="/seminar-3/tastyRep3/View/Pancakes">Pancakes</a></li>
 	  <li><a href="/seminar-3/tastyRep3/View/Meatballs">Meatballs</a></li>
 	  <li><a href="/seminar-3/tastyRep3/View/Calendar">Calendar</a></li>
-	  <li><a href="/seminar-3/tastyRep3/View/Login">Login</a></li>
+	  <li><a href="/seminar-3/tastyRep3/View/Login_view">Login</a></li>
 	</ul>
 	</nav>
 </div>
