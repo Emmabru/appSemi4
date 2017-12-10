@@ -1,36 +1,52 @@
-<?php
+<?php 
 namespace tastyRep3\Controller;
 
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
-      
-      $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
-      
-      $sql = "SELECT username FROM user WHERE username = '$myusername' and password = '$mypassword'";
-      
-      $result = mysqli_query($db,$sql);
-      
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $username = $row['username'];
-      
+use tastyRep3\Util\Constants;
+use tastyRep3\Model;
 
-      $count = mysqli_num_rows($result);
-      
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
-      if($count == 1) {
-         //session_register("myusername");
+      define('DB_SERVER', 'localhost:3306');
+      define('DB_USERNAME', 'app-course');
+      define('DB_PASSWORD', 'AppDatabase.1');
+      define('DB_DATABASE', 'tastyRep');
 
-         $_SESSION['username'] = $username;
-			
-         //$_SESSION['username'] = $username;
-         header("location: recipe.html");
-      }else {
-         echo "Your Login Name or Password is invalid";
-         sleep(10);
-         header("location: login-page.php");
-      }
+
+class login_control {
+
+   public function __construct(){
+
    }
-?>
+
+   public function dbConn() {
+      $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+
+      if(!$db){
+         die("Connection failed: ".mysqli_connect_error());
+      }
+         return $db;
+      }
+
+   public function loginUser($username, $password) {
+     
+
+        //$login = $contr->
+        $user = new \tastyRep3\Model\User($username,$password);
+
+        $login = $user->loginUser();
+        //echo '<pre>';
+        //echo var_dump(get_declared_classes() );
+        if($login == 'Invalid'){
+            echo 4;
+            //return 'login_page';
+        }else if($login == 'loginOk'){
+            
+            return 'ok';
+            
+        }else {
+            echo 5;
+            //return 'login_page';
+        }
+   }
+}
+
+
+

@@ -22,4 +22,5 @@ class DefaultRequestHandler extends AbstractRequestHandler {
 
         \header('Location: /seminar-3/tastyRep3/View/FirstPage');
     }
+    
 }

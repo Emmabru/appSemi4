@@ -20,7 +20,16 @@
 	  <li><a href="/seminar-3/tastyRep3/View/Pancakes">Pancakes</a></li>
 	  <li><a href="/seminar-3/tastyRep3/View/Meatballs">Meatballs</a></li>
 	  <li><a href="/seminar-3/tastyRep3/View/Calendar">Calendar</a></li>
-	  <li><a href="/seminar-3/tastyRep3/View/Login_view">Login</a></li>
+	  <?php
+		use tastyRep3\Util\Constants;
+	 	$this->session->restart();
+	  	
+	  	if($this->session->get(Constants::USER_LOGGED_IN) == "notLoggedIn" || $this->session->get(Constants::USER_LOGGED_IN) == null){
+	  		echo "<li><a href='/seminar-3/tastyRep3/View/Login_view'>Login</a></li>";
+	  	}else{
+	  		echo "<li><a href='#''>".$this->session->get(Constants::USER_LOGGED_IN)."</a></li>";
+		}
+		?>
 	</ul>
 	</nav>
 </div>

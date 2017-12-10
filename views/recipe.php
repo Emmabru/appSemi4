@@ -16,7 +16,16 @@
 	  <li><a href="/seminar-3/tastyRep3/View/Pancakes">Pancakes</a></li>
 	  <li><a href="/seminar-3/tastyRep3/View/Meatballs">Meatballs</a></li>
 	  <li><a href="/seminar-3/tastyRep3/View/Calendar">Calendar</a></li>
-	  <li><a href="/seminar-3/tastyRep3/View/Login_view">Login</a></li>
+	  	<?php
+		use tastyRep3\Util\Constants;
+		$this->session->restart();
+	  	
+	  	if($this->session->get(Constants::USER_LOGGED_IN) == "notLoggedIn" || $this->session->get(Constants::USER_LOGGED_IN) == null){
+	  		echo "<li><a href='/seminar-3/tastyRep3/View/Login_view'>Login</a></li>";
+	  	}else{
+	  		echo "<li><a href='#''>".$this->session->get(Constants::USER_LOGGED_IN)."</a></li>";
+		}
+		?>
 	</ul>
 	</nav>
 
@@ -81,18 +90,26 @@
 	 				Kaksmulan.
 	 			</div>
 	 	</div>
-	 	<div class="comment_new">
-	 		 <?php
-			
-				echo  $_SESSION['username'];
-			?> <br>
-		 	<form action="addComment.php" method="post">
-			  <input type="hidden" name="username" value='<?php echo $_SESSION['username']; ?>' '/>
-			  <input type="text" name="user_comment" value="Write your comment here"><br><br>
-			  <input type="submit" value="Submit">
-			</form>
+
+	 	<?php
+		//use tastyRep3\Util\Constants;
+	  	$this->session->restart();
+	  	
+	  	if($this->session->get(Constants::USER_LOGGED_IN) == "notLoggedIn" || $this->session->get(Constants::USER_LOGGED_IN) == null){
+	  		
+	  	} else {
+	  		echo 
+	  		" <div class='comment_new'>
+		 		<br>
+			 	<form action='addComment' method='post'>
+				  <input type='text' name='user_comment' value='Write your comment here'><input type='hidden' name='recipeID' value='1'><br><br>
+				  <input type='submit' value='Submit'>
+				</form>
+			</div>
+		
+			";}
+		?>
 		</div>
-	</div>
 </section>
 
 </body>

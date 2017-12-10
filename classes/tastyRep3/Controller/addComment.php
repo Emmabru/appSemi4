@@ -1,39 +1,56 @@
 <?php
-   	include("dbconfig.php");
-   	session_start();
-   	if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
-      // redirect to your login page
-      $name="Login";
-		}
-
-		$name = $_SESSION['username'];
-
-
-
+   namespace tastyRep3\Controller;
    
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      
-   	  //$comment = 'kaksmulan';
-      $user = 'emma';
-      
-      $sql = "INSERT INTO comment (id_recipe, commentid, username, textbox) VALUES (1, 5, ".$_POST["username"].", ".$_POST["user_comment"].")";
+   use tastyRep3\Util\Constants;
+   use tastyRep3\Model;
 
-      // Test of sql query
-      echo $sql . "<br>";
-    
-      if($db === false){
-      	echo "neeeeeeeej" . "<br>";
-   		 die("ERROR: Could not connect. " . mysqli_connect_error());
-		}
+      define('DB_SERVER', 'localhost:3306');
+      define('DB_USERNAME', 'app-course');
+      define('DB_PASSWORD', 'AppDatabase.1');
+      define('DB_DATABASE', 'tastyRep');
 
 
+class addComment {
 
-   /*if ($db->query($sql)) {
-    echo "New record created successfully";
-	} else {
-	    echo "Error: " . $sql . "<br>" ;
-	}*/
+   public function __construct(){
 
-$db->close();
+   }
+
+   public function dbConn() {
+      $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+
+      if(!$db){
+         die("Connection failed: ".mysqli_connect_error());
+      }
+         return $db;
+      }
+
+   public function newComment($username, $recipeID, $comment) {
+         echo "addcomment fil ";
+         $newComment = new \tastyRep3\Model\Comment($username, $recipeID, $comment);
+
+
+         $comment = $newComment->addComment();
+
+   }
+
 }
 
+
+
+
+
+/*
+   $dbmanager = new \tastyRep3\Model\dbmanager();
+   $this->session->restart();
+   $user = $this->session->get(Constants::USER_LOGGED_IN); 
+
+
+   $dbmanager->createComment($user, $_POST["recipeID"], $_POST["user_comment"]);
+      
+   $sql = "INSERT INTO comments (author, comment) VALUES ( ".$user.", ".$_POST["user_comment"].");";
+}
+
+      $newComment = new \tastyRep3\Controller\addComment();
+      if('ok' == $newComment->createComment($this->theUsername, 1, $this->thePassword)) {
+        }*/

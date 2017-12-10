@@ -1,6 +1,6 @@
 <?php
 
-  namespace tastyRep3\model
+  namespace tastyRep3\Model;
 
 
 class Auth extends AbstractModel
