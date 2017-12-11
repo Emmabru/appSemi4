@@ -23,7 +23,7 @@ class dbmanager {
     public function getUserPasswordByName($username){
         $usernameSafe = mysqli_real_escape_string($this->conn, $username);     
         $query = "SELECT password FROM user WHERE username ='".$usernameSafe."';";
-
+        echo $query;
         $result = mysqli_query($this->conn, $query);
         if($result == false || $result == FALSE){
             echo "FAIL!!!!";
@@ -42,19 +42,30 @@ class dbmanager {
 
 
 
-    public function createComment($username,$recipe,$commentText){
-        $usernameSafe = mysqli_real_escape_string($this->conn,$username);
-        $recipeSafe = mysqli_real_escape_string($this->conn,$recipe);
-        $commentTextSafe = mysqli_real_escape_string($this->conn,$commentText);
+    public function createComment($username, $recipeID, $user_comment){
+        
+        $usernameSafe = mysqli_real_escape_string($this->conn, $username);
+        $recipeSafe = mysqli_real_escape_string($this->conn,$recipeID);
+        $commentTextSafe = mysqli_real_escape_string($this->conn,$user_comment);
        
-        $query = "SELECT id_user FROM user WHERE username=".$usernameSafe.";";
-        $userid = mysql_query($this->conn, $query);
+        $query = "SELECT id_user FROM user WHERE username ='".$usernameSafe."';";
+        //echo $query;
+        $userid = mysqli_query($this->conn, $query);
         $userid = mysqli_fetch_assoc($userid);
-        echo $userid['id_user'];
-        //$query = "INSERT INTO comments (author, comment) VALUES ('"$userid['id_user']"', '".$commentTextSafe."');";
+        //echo "<br> DETTA " . $userid['id_user'];
+        $idUser = $userid['id_user'];
+        
+        $query = "INSERT INTO comments (author, comment) VALUES ($idUser, '".$commentTextSafe."');";
+        //echo $query. "<br>";
         mysqli_query($this->conn, $query);
-        $last_inserted = mysql_idcomment();
-        echo $last_inserted;
+        $idComm = $this->conn->insert_id;
+        
+        $query = "INSERT INTO recipeToComment (recipeID, commentid) VALUES ('".$recipeSafe."', '".$idComm."');";
+        //echo $query;
+        if(mysqli_query($this->conn, $query)){
+            return 'okDB';
+        }
+       
 
     }
     

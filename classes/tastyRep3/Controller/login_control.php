@@ -32,6 +32,11 @@ class login_control {
         $user = new \tastyRep3\Model\User($username,$password);
 
         $login = $user->loginUser();
+
+
+
+
+        
         //echo '<pre>';
         //echo var_dump(get_declared_classes() );
         if($login == 'Invalid'){

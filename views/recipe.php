@@ -101,8 +101,9 @@
 	  		echo 
 	  		" <div class='comment_new'>
 		 		<br>
-			 	<form action='addComment' method='post'>
-				  <input type='text' name='user_comment' value='Write your comment here'><input type='hidden' name='recipeID' value='1'><br><br>
+			 	<form action='Pancakes' method='post'>
+				  <input type='text' name='user_comment' value='Write your comment here'/>
+				  <input type='hidden' id='recipeID' name='recipeID' value='1'/>
 				  <input type='submit' value='Submit'>
 				</form>
 			</div>

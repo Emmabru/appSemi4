@@ -47,6 +47,9 @@ class Login_view extends AbstractRequestHandler {
                         echo 3;
             //return 'login_page';
         }
+
+
+        
          $control = new \tastyRep3\Controller\login_control();
         if('ok' == $control->loginUser($this->theUsername,$this->thePassword)) {
             //$this->session->restart();

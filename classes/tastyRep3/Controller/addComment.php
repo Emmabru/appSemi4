@@ -15,6 +15,7 @@ class addComment {
    public function __construct(){
 
    }
+   
 
    public function dbConn() {
       $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
@@ -25,12 +26,22 @@ class addComment {
          return $db;
       }
 
-   public function newComment($username, $recipeID, $comment) {
-         echo "addcomment fil ";
-         $newComment = new \tastyRep3\Model\Comment($username, $recipeID, $comment);
+   public function newComment($username, $recipeID, $user_comment) {
+         /*echo "addcomment fil ". "<br>";
+         echo "<br> 3 " . $username;
+         echo "<br> 3 " . $recipeID;
+         echo "<br> 3 " . $user_comment; /*/
+
+
+         $newComment = new \tastyRep3\Model\Comment($username, $recipeID, $user_comment);
 
 
          $comment = $newComment->addComment();
+         if($comment == 'commentOk'){
+            return 'ok';
+         } else {
+            echo "Error in addComment";
+         }
 
    }
 
