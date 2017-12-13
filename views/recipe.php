@@ -74,7 +74,7 @@
 	<div class="comments_section">
 	 	<h3>Comments</h3>
 	 	<div class="comment">
-	 		<div class="comment_item_head">
+	 		<!--<div class="comment_item_head">
 		 			<div class="comment_item_name">Mamma</div>
 		 			<div class="comment_item_date">2017-11-11</div>
 	 			</div>
@@ -89,12 +89,53 @@
 	 			<div class="comment_item_body">
 	 				Kaksmulan.
 	 			</div>
+		-->
+
+
+
+	 			<?php
+      //if ($this->session->get('uid') !==false) {
+        ?>
+        <?php
+		//echo '<pre>';
+		foreach ($comments as $comment)
+		{
+		  ?>
+		    <div class="c1">
+		      <p>
+		        <?php echo $comment['username']; ?><br />
+		        <?php echo $comment['comment']; ?><br />
+		        <?php echo nl2br($comment['message']);
+
+		       if($this->session->get(Constants::USER_LOGGED_IN) == "notLoggedIn" || $this->session->get(Constants::USER_LOGGED_IN) == null){
+			  		echo " not logged in";
+			  	}else{
+			  		//echo "<input type='submit' value='Delete' class='delete'>";
+				
+		        //if($this->session->get(Constants::USER_LOGGED_IN)==$comment['username']){
+		          echo '<a href="Pancakes?delete=' . $comment['idcomments'] . '"> Delete </a>';
+		        	//echo "deleteknapp";
+		        }
+		        
+		        ?>
+		      </p>
+		    </div>
+		  <?php
+		}
+		//echo '</pre>';
+		?>
+
+
+
+
+
 	 	</div>
 
 	 	<?php
 		//use tastyRep3\Util\Constants;
 	  	$this->session->restart();
 	  	
+
 	  	if($this->session->get(Constants::USER_LOGGED_IN) == "notLoggedIn" || $this->session->get(Constants::USER_LOGGED_IN) == null){
 	  		
 	  	} else {

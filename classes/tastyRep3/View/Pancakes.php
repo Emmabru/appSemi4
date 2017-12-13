@@ -13,6 +13,11 @@ class Pancakes extends AbstractRequestHandler {
     
 	private $user_comment;
 	private $recipeID;
+    private $delete = null;
+    
+    public function setDelete($delete){
+        $this->delete=$delete;
+    }
     
     public function setUser_comment($user_comment){
         $this->user_comment = $user_comment;
@@ -23,10 +28,27 @@ class Pancakes extends AbstractRequestHandler {
     } 
 
     protected function doExecute() {
- 	
+ 	     
+        $this->session->restart();
+
+        $control = new \tastyRep3\Controller\addComment();
+
+        if($this->delete!==null && preg_match('/^[0-9]{1,10}$/', $this->delete)){
+           // echo "hej";
+           // echo $this->delete;
+            $control->deleteComment($this->session->get(Constants::USER_LOGGED_IN), $this->delete);
+        }
+
  		
  		if(empty($this->user_comment)) {
             //echo " femtitva";
+
+            $list_of_comments = $control->getComments('1');
+           // echo $list_of_comments . " mammamam</br>";
+            $this->addVariable('comments', $list_of_comments);
+
+            //$list_of_comments = $control->getAuthors('1');
+            //$this->addVariable('authors', $list_of_authors);
 
  			return 'recipe';
     	} else {
@@ -36,8 +58,6 @@ class Pancakes extends AbstractRequestHandler {
             echo $this->session->get(Constants::USER_LOGGED_IN) . "<br>";
             */
 
-    		$control = new \tastyRep3\Controller\addComment();
-
             if('ok' == $newComment = $control->newComment($this->session->get(Constants::USER_LOGGED_IN), $this->recipeID,$this->user_comment)) {
                 return 'recipe';
             } else {
@@ -45,7 +65,7 @@ class Pancakes extends AbstractRequestHandler {
             }
 
 	    	
-
+            
 
 
 	    	/*if('ok' == XXXXX) {

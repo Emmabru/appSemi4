@@ -9,12 +9,15 @@ class Comment {
     private $recipeID;
     private $user_comment;
     
+
     public function __construct($username, $recipeID, $user_comment) {
-        $this->dbmanager = new dbmanager();
+        $this->dbmanager = new dbmanager();  
         $this->username = $username;
         $this->recipeID = $recipeID;
         $this->user_comment = $user_comment;
     }
+
+
 
     public function addComment(){
         //echo " <br> inne i Comment! <br> ";
@@ -28,4 +31,5 @@ class Comment {
         }
     	//return 
     }
+
 }

@@ -45,6 +45,30 @@ class addComment {
 
    }
 
+   function getComments($recipe){
+      //echo $recipe . " i addComment </br>";
+      $dbmanager = new \tastyRep3\Model\dbmanager($recipe);
+      
+      if($list_of_comments = $dbmanager->getComment($recipe)) {
+           // echo "walla 2";
+            return $list_of_comments;
+        } else {
+            echo " error in Comment 2";
+        }
+
+   }
+
+   function deleteComment($username, $commID){
+      //echo $recipe . " i addComment </br>";
+      //echo $commID;
+      $dbmanager = new \tastyRep3\Model\dbmanager($commID);
+      
+      $dbmanager->deleteComment($commID);
+          
+   }
+
+   
+
 }
 
 
