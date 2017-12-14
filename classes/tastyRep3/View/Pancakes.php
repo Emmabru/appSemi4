@@ -11,10 +11,15 @@ use tastyRep3\Model;
 
 class Pancakes extends AbstractRequestHandler {
     
-	private $user_comment;
-	private $recipeID;
+    private $user_comment;
+    private $recipeID;
     private $delete = null;
+    private $username;
     
+    public function setUsername($username){
+        $this->username=$username;
+    }
+
     public function setDelete($delete){
         $this->delete=$delete;
     }
@@ -22,57 +27,43 @@ class Pancakes extends AbstractRequestHandler {
     public function setUser_comment($user_comment){
         $this->user_comment = $user_comment;
     }
-   	
-   	public function setRecipeID($recipeID){
+    
+    public function setRecipeID($recipeID){
         $this->recipeID = $recipeID;
     } 
 
     protected function doExecute() {
- 	     
+         
         $this->session->restart();
 
         $control = new \tastyRep3\Controller\addComment();
 
         if($this->delete!==null && preg_match('/^[0-9]{1,10}$/', $this->delete)){
-           // echo "hej";
-           // echo $this->delete;
+
             $control->deleteComment($this->session->get(Constants::USER_LOGGED_IN), $this->delete);
         }
 
- 		
- 		if(empty($this->user_comment)) {
-            //echo " femtitva";
+        
+        if(empty($this->user_comment)) {
+          
 
             $list_of_comments = $control->getComments('1');
-           // echo $list_of_comments . " mammamam</br>";
+          
             $this->addVariable('comments', $list_of_comments);
 
-            //$list_of_comments = $control->getAuthors('1');
-            //$this->addVariable('authors', $list_of_authors);
-
- 			return 'recipe';
-    	} else {
-    		/*echo "heej <br>";
-            echo $this->user_comment . "<br>";
-            echo $this->recipeID . "<br>";
-            echo $this->session->get(Constants::USER_LOGGED_IN) . "<br>";
-            */
+            return 'recipe';
+        } else {
 
             if('ok' == $newComment = $control->newComment($this->session->get(Constants::USER_LOGGED_IN), $this->recipeID,$this->user_comment)) {
-                return 'recipe';
+                //this->addVariable('loadComments', 'ok');
+                return 'loadComments';
             } else {
                 echo "<br> error i Pancakes";
             }
 
-	    	
+            // klass till ajax för atts
             
-
-
-	    	/*if('ok' == XXXXX) {
-	    		$this->session->set(Constants::USER_LOGGED_IN, $this->theUsername);
-	    		 */
-	            //return 'index';
- 			}
-    	}
+            }
+        }
     }
 

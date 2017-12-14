@@ -73,25 +73,7 @@
 
 	
 	 	<h3>Comments</h3>
-	 	<?php
-	
-	  	$this->session->restart();
-	  	if($this->session->get(Constants::USER_LOGGED_IN) == "notLoggedIn" || $this->session->get(Constants::USER_LOGGED_IN) == null){
-	  	} else {
-	  		echo "HEJ";
-	  		echo "<div id='recipe_comment_form'>
-	  			<div>
-	  				<form id='recipe_comment_form'>
-				  <textarea id='user_comment'></textarea>
-				  <input type='submit' id='submit_button'/>
-
-				</div>"
-				
-
-	  		/*" "*/
-			;}
-		?>
-	 		
+	 	
 	 		<!--<div class="comment_item_head">
 		 			<div class="comment_item_name">Mamma</div>
 		 			<div class="comment_item_date">2017-11-11</div>
@@ -109,16 +91,16 @@
 	 			</div>
 		-->
 
-        <div class= "comments_section" id="comments_section"> </div>
-        
 
+
+	 			<?php
+      //if ($this->session->get('uid') !==false) {
+        ?>
+        <div class= "comments_section" id="comments_section">
         <?php
-
-
-        
-         /*
-		echo '<pre>';
-		foreach ($comments as $comment)
+         
+		//echo '<pre>';
+		/*foreach ($comments as $comment)
 		{
 		  ?>
 		   
@@ -143,15 +125,133 @@
 		   	
 		  <?php
 		//}
-	
+		//echo '</pre>';
 		?>
 		</div>
-	 	
+	 	<?php
+		//use tastyRep3\Util\Constants;
+	  	$this->session->restart();
+	  	
+
+	  	if($this->session->get(Constants::USER_LOGGED_IN) == "notLoggedIn" || $this->session->get(Constants::USER_LOGGED_IN) == null){
+	  		
+	  	} else {
+	  		echo 
+	  		" <form id='recipe_comment_form' class='comment_new'>
+				  <textarea id='idcomments'></textarea>
+				  <input type='submit' id='submit_button'/>
+				</form>"
+
+			
+
+	  		//kod för semi3
+	  		/*" <div class='comment_new'>
+		 		<br>
+			 	<form id='recipe_comment_form'>
+				  <input type='text' id='user_comment' name='user_comment' value='Write your comment here'/>
+				  <input type='hidden' id='recipeID' name='recipeID' value='1'/>
+				  <input type='submit' id='submit_button' value='Submit'/>
+				</form>
+			</div>
+			"*/
+			;}
+		?>
 		</div>
-
 </section>
-
 
 
 </body>
 </html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function()
+	{
+		//loadComments();
+
+		
+		$('#recipe_comment_form').submit(function(event)
+		{
+			event.preventDefault();
+
+			$('#comment, #submit_button').prop('disabled', true);
+
+			// hanterar submission
+			var comment_from_textarea = $('#comment').val();
+
+			//$.post('url', parametrar, funktion-som-hanterar-svaret);
+
+			$.post('/Pancakes',
+			{
+				'comment': comment_from_textarea
+			}, function(data)
+			{
+				$('#comment, #submit_button').prop('disabled', false);
+
+				if (data == 'OK')
+				{
+					// reload comments
+					loadComments();
+				}
+		
+				else
+				{
+					alert(data);
+				}
+			});
+		});
+	});
+
+
+	/*$(document).on('click', 'button.remove_comment', function()
+	{
+		var comment_holder = $(this).parent();
+		var comment_id_to_delete = comment_holder.attr('data-id');
+
+		$.post('...', { 'delete_id': comment_id_to_delete }, function(data)
+		{
+			comment_holder.remove();
+		}):
+	});*/
+
+	var loadComments = function()
+	{
+
+		$.get('/tastyRep3/View/Pancakes', { 
+			//comment: user_comment 
+			}, function(data) {
+			$('#comments_section').html(data);
+
+
+			/*
+			/?????????????
+		var allComments = "";
+
+		parsedData = JSON.parse(data);
+
+		for(var i in parsedData){
+
+			allComments += "<div class='comments_section'>"
+			//sessID= user id?
+			if(parsedData[i].sessionId == parsedData[i].userId) {
+
+				allComments += '<button id="delete" type="submit" value"' . $comment["idcomments"] . '"> Delete </button>';
+			}
+			//print comments
+			allComments += parsedData[i].username + " " + parsedData[i].comment;
+			allComments += "</div";
+			}
+			// puts comment in right place
+					$(".comments_section").html(allComments)
+			});
+		}
+		loadComments();
+*/
+		});
+	};
+	//comment_to_delete = $('...')
+
+//comment_to_delete.remove();
+</script>
+
+
