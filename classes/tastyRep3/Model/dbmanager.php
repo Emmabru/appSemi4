@@ -83,7 +83,7 @@ class dbmanager {
         $queryResults = mysqli_query($this->conn, $query);
         return $queryResults;
         */
-       
+
         $list_of_comments = array();
       $sql="SELECT commentID FROM recipeToComment WHERE recipeID = '" . $recipe . "';";
 

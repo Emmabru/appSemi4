@@ -27,14 +27,8 @@ class addComment {
       }
 
    public function newComment($username, $recipeID, $user_comment) {
-         /*echo "addcomment fil ". "<br>";
-         echo "<br> 3 " . $username;
-         echo "<br> 3 " . $recipeID;
-         echo "<br> 3 " . $user_comment; /*/
-
 
          $newComment = new \tastyRep3\Model\Comment($username, $recipeID, $user_comment);
-
 
          $comment = $newComment->addComment();
          if($comment == 'commentOk'){
@@ -48,9 +42,10 @@ class addComment {
    function getComments($recipe){
       //echo $recipe . " i addComment </br>";
       $dbmanager = new \tastyRep3\Model\dbmanager($recipe);
-      
+      echo $recipe . "wallaaaa </br>";
       if($list_of_comments = $dbmanager->getComment($recipe)) {
-           // echo "walla 2";
+            //echo "walla 2";
+            
             return $list_of_comments;
         } else {
             echo " error in Comment 2";

@@ -14,10 +14,10 @@ class Pancakes extends AbstractRequestHandler {
     private $user_comment;
     private $recipeID;
     private $delete = null;
-    private $username;
-    
-    public function setUsername($username){
-        $this->username=$username;
+    private $message = null;
+
+    public function setMessage($message){
+        $this->message=$message;
     }
 
     public function setDelete($delete){
@@ -30,6 +30,7 @@ class Pancakes extends AbstractRequestHandler {
     
     public function setRecipeID($recipeID){
         $this->recipeID = $recipeID;
+
     } 
 
     protected function doExecute() {
@@ -43,20 +44,20 @@ class Pancakes extends AbstractRequestHandler {
             $control->deleteComment($this->session->get(Constants::USER_LOGGED_IN), $this->delete);
         }
 
-        
+
         if(empty($this->user_comment)) {
-          
 
             $list_of_comments = $control->getComments('1');
           
             $this->addVariable('comments', $list_of_comments);
 
+
             return 'recipe';
         } else {
 
             if('ok' == $newComment = $control->newComment($this->session->get(Constants::USER_LOGGED_IN), $this->recipeID,$this->user_comment)) {
-                //this->addVariable('loadComments', 'ok');
-                return 'loadComments';
+                
+                return 'recipe';
             } else {
                 echo "<br> error i Pancakes";
             }

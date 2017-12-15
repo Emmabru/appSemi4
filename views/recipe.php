@@ -4,6 +4,53 @@
 <title>Emma</title>
 <link rel="stylesheet" type="text/css" href="/seminar-3/resources/css/reset.css">
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var after_post_handler= function(data){
+    $("#comment").val("");
+    //hämtar kommentarer när man postat en ny kommentar
+    load_comments();
+  };
+  //hämtar kommentarerna
+  var load_comments=function(){
+    $.get("AjaxComment", 
+    	{	
+    		"recipe":"1"
+    	} , function(data){
+        $("#placeholder").html(data);
+        
+      })
+  };
+
+  $(document).ready(function()
+  {
+    load_comments();
+    //när man sickat en kommentar
+    $('#recipe_comment_form').submit(function(event)
+    {
+      event.preventDefault();
+      $.post("Pancakes", 
+      {
+        "recipe": "1",
+        "comment": $("#comment").val()
+      }, after_post_handler);
+    });
+  });
+  $(document).on("click",".buttonremove",function(){
+      var holder=$(this).parent().parent();
+      var idcomments= holder.attr("data-cid");
+      $.get("Pancakes?delete="+idcomments, function(data){
+        holder.remove();
+      });
+    });
+</script>
+
+
+
+
+
+
 </head>
 
 <body>
@@ -71,87 +118,41 @@
 		 </p>
 	</div>
 
+
+
+
+
+
+		<div class=comments>
 	
 	 	<h3>Comments</h3>
 	 	<?php
 	
 	  	$this->session->restart();
 	  	if($this->session->get(Constants::USER_LOGGED_IN) == "notLoggedIn" || $this->session->get(Constants::USER_LOGGED_IN) == null){
+
+	  		echo "You can not comment since you are not logged in!";
+	  	
 	  	} else {
-	  		echo "HEJ";
-	  		echo "<div id='recipe_comment_form'>
-	  			<div>
-	  				<form id='recipe_comment_form'>
-				  <textarea id='user_comment'></textarea>
-				  <input type='submit' id='submit_button'/>
 
-				</div>"
-				
-
-	  		/*" "*/
-			;}
-		?>
-	 		
-	 		<!--<div class="comment_item_head">
-		 			<div class="comment_item_name">Mamma</div>
-		 			<div class="comment_item_date">2017-11-11</div>
-	 			</div>
-	 			<div class="comment_item_head">
-	 				So delicious thick and fluffy! Will be making these again!
-	 			</div>
-	 		
-	 			<div class="comment_item_head">
-		 			<div class="comment_item_name">Emma</div>
-		 			<input type="submit" value="Delete" class="delete">
-	 			</div>
-	 			<div class="comment_item_body">
-	 				Kaksmulan.
-	 			</div>
-		-->
-
-        <div class= "comments_section" id="comments_section"> </div>
-        
-
-        <?php
-
-
-        
-         /*
-		echo '<pre>';
-		foreach ($comments as $comment)
-		{
-		  ?>
-		   
-		      <p data-id = $comment['idcomments'] >
-		        <?php echo $comment['username']; ?><br />
-		        <?php echo $comment['comment']; ?><br />
-		        <?php echo nl2br($comment['message']);
-
-		       if($this->session->get(Constants::USER_LOGGED_IN) == "notLoggedIn" || $this->session->get(Constants::USER_LOGGED_IN) == null){
-			  		//echo " not logged in";
-			  	}else{
-			  		//echo "<input type='submit' value='Delete' class='delete'>";
-				
-		        //if($this->session->get(Constants::USER_LOGGED_IN)==$comment['username']){
-		          echo '<button id="delete" href="Pancakes?delete=' . $comment['idcomments'] . '"> Delete </button>';
-		        	//echo "deleteknapp";
-		        }
-		        
-		        */
-		        ?>
-		      </p>
-		   	
-		  <?php
-		//}
+	  		
+	  		?>
+	        <form id="recipe_comment_form" method='POST'>
+	            <textarea id='comment' placeholder='Enter text here...'></textarea>
+	            <br>
+	            <br>
+	            <button type='submit' id="comment">Comment </button>
+			</form>
+	  		<?php
+	  		}
+	  		?>
 	
-		?>
+     
+
+		<div id="placeholder">
+		  </div>
 		</div>
-	 	
-		</div>
-
-</section>
-
-
-
-</body>
+		        
+		</section>
+	</body>
 </html>
