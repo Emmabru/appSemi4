@@ -27,35 +27,24 @@ class addComment {
       }
 
    public function newComment($username, $recipeID, $user_comment) {
-
          $newComment = new \tastyRep3\Model\Comment($username, $recipeID, $user_comment);
 
          $comment = $newComment->addComment();
-         if($comment == 'commentOk'){
-            return 'ok';
-         } else {
-            echo "Error in addComment";
-         }
-
    }
 
-   function getComments($recipe){
-      //echo $recipe . " i addComment </br>";
+   public function getComments($recipe){
+     
       $dbmanager = new \tastyRep3\Model\dbmanager($recipe);
-      echo $recipe . "wallaaaa </br>";
       if($list_of_comments = $dbmanager->getComment($recipe)) {
-            //echo "walla 2";
-            
             return $list_of_comments;
+
         } else {
             echo " error in Comment 2";
         }
 
    }
 
-   function deleteComment($username, $commID){
-      //echo $recipe . " i addComment </br>";
-      //echo $commID;
+   public function deleteComment($username, $commID){
       $dbmanager = new \tastyRep3\Model\dbmanager($commID);
       
       $dbmanager->deleteComment($commID);

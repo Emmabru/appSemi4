@@ -14,12 +14,9 @@
   };
   //hämtar kommentarerna
   var load_comments=function(){
-    $.get("AjaxComment", 
-    	{	
-    		"recipe":"1"
-    	} , function(data){
+     $.get("AjaxComment?recipe=1", 
+      function(data){
         $("#placeholder").html(data);
-        
       })
   };
 
@@ -32,15 +29,17 @@
       event.preventDefault();
       $.post("Pancakes", 
       {
-        "recipe": "1",
+        "recipeID": "1",
         "comment": $("#comment").val()
       }, after_post_handler);
     });
   });
+
+
   $(document).on("click",".buttonremove",function(){
       var holder=$(this).parent().parent();
-      var idcomments= holder.attr("data-cid");
-      $.get("Pancakes?delete="+idcomments, function(data){
+      var cid= holder.attr("data-cid");
+      $.get("Pancakes?delete="+cid, function(data){
         holder.remove();
       });
     });
@@ -126,29 +125,20 @@
 		<div class=comments>
 	
 	 	<h3>Comments</h3>
-	 	<?php
-	
-	  	$this->session->restart();
-	  	if($this->session->get(Constants::USER_LOGGED_IN) == "notLoggedIn" || $this->session->get(Constants::USER_LOGGED_IN) == null){
-
-	  		echo "You can not comment since you are not logged in!";
-	  	
-	  	} else {
-
-	  		
-	  		?>
-	        <form id="recipe_comment_form" method='POST'>
-	            <textarea id='comment' placeholder='Enter text here...'></textarea>
-	            <br>
-	            <br>
-	            <button type='submit' id="comment">Comment </button>
-			</form>
-	  		<?php
-	  		}
-	  		?>
-	
-     
-
+			<?php
+		      if ($this->session->get(Constants::USER_LOGGED_IN) !==false) {
+		        ?>
+		        <form id="recipe_comment_form" method='POST'>
+		            <textarea id='comment' placeholder='Enter text here...'></textarea>
+		            <br>
+		            <br>
+		            <button type='submit' id="comment">Comment </button>
+		          </form>
+		          <?php
+		          } else {
+		            echo "You can not comment since you are not logged in!";
+		          }
+		?>
 		<div id="placeholder">
 		  </div>
 		</div>

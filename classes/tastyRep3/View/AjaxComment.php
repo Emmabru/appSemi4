@@ -24,8 +24,6 @@ class AjaxComment extends AbstractRequestHandler {
 		
 		$list_of_comments = $comments->getComments($this->recipe);
 		
-		echo $list_of_comments;
-		echo "manetmannen";
 		//Setting the title name for the page
 		$this->addVariable('comments', $list_of_comments);
 		return 'ajaxcomment';

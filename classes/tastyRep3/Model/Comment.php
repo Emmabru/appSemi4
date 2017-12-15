@@ -20,9 +20,6 @@ class Comment {
 
 
     public function addComment(){
-        //echo " <br> inne i Comment! <br> ";
-
-        //echo "<br>          " . $this->username;
 
     	if('okDB' == $this->dbmanager->createComment($this->username, $this->recipeID, $this->user_comment)) {
             return 'commentOk';
