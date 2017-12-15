@@ -12,7 +12,7 @@ foreach ($comments as $comment)
          if($this->session->get(Constants::USER_LOGGED_IN)== $comment['username']){
             echo '<button class="buttonremove">Delete</button>';
           }
-        ?>
+        ?><br />
       </p>
     </div>
   <?php

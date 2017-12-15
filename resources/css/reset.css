@@ -108,6 +108,7 @@ ul {
     margin: 0 auto;
     margin-top: 3%;
     float: left;
+    margin-left: 450px;
     display: block;
     color: white;
     text-align: center;
@@ -189,7 +190,43 @@ section{
     padding-top: 20px;
     width: inherit;
 }
+.comments {
+    margin-left: 40px; 
+}
+textarea#comment {
+    border-radius: 10px;
+    padding: 10px;
+}
+button#comment {
+    font-family: quicksand;
+    background-color: #BA5536;
+    width: 10%;
+    color: white;
+    padding: 8px 10px;
+    margin: 8px;
+    border: none;
+    border-radius: 4px;
+}
+button#comment:hover {
+    background-color: #A43820;
+    color: white;
+}
 
+ 
+.buttonremove {
+    font-family: quicksand;
+    background-color: #BA5536;
+    width: 7%;
+    color: white;
+    padding: 5px 1px;
+    margin: 8px;
+    border: none;
+    border-radius: 4px;
+}
+.buttonremove:hover {
+    background-color: #A43820;
+    color: white;
+}
 .c1 {
     color:blue;
     

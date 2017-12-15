@@ -23,7 +23,7 @@ class dbmanager {
     public function getUserPasswordByName($username){
         $usernameSafe = mysqli_real_escape_string($this->conn, $username);     
         $query = "SELECT password FROM user WHERE username ='".$usernameSafe."';";
-        echo $query;
+        //echo $query;
         $result = mysqli_query($this->conn, $query);
         if($result == false || $result == FALSE){
             echo "FAIL!!!!";
@@ -32,12 +32,12 @@ class dbmanager {
         return $row['password'];
     }
     
-    public function createUser($username,$password){
+    /*public function createUser($username,$password){
         $usernameSafe = mysqli_real_escape_string($this->conn,$username);
         $passwordSafe = mysqli_real_escape_string($this->conn,$password);
         $query = "INSERT INTO users (user_name, user_password) VALUES ('".$usernameSafe."', '".$passwordSafe."');";
         mysqli_query($this->conn, $query);
-    }
+    }*/
     
 
 
@@ -49,14 +49,14 @@ class dbmanager {
         $commentTextSafe = mysqli_real_escape_string($this->conn,$user_comment);
        
         $query = "SELECT id_user FROM user WHERE username ='".$usernameSafe."';";
-        echo $query;
+        //echo $query;
         $userid = mysqli_query($this->conn, $query);
         $userid = mysqli_fetch_assoc($userid);
         //echo "<br> DETTA " . $userid['id_user'];
         $idUser = $userid['id_user'];
         
         $query = "INSERT INTO comments (author, comment) VALUES ($idUser, '".$commentTextSafe."');";
-        echo $query. "<br>";
+        //echo $query. "<br>";
         mysqli_query($this->conn, $query);
         $idComm = $this->conn->insert_id;
         
@@ -68,21 +68,8 @@ class dbmanager {
        
 
     }
-    
-
-
-
-
-
-
-
 
     public function getComment($recipe){
-        /*$recipeSafe = mysqli_real_escape_string($this->conn,$recipe);
-        $query = "SELECT * FROM recipecomment WHERE recipe = '".$recipeSafe."'";
-        $queryResults = mysqli_query($this->conn, $query);
-        return $queryResults;
-        */
 
         $list_of_comments = array();
       $sql="SELECT commentID FROM recipeToComment WHERE recipeID = '" . $recipe . "';";
@@ -111,7 +98,7 @@ class dbmanager {
     }
     
     public function deleteComment($commentID){
-        echo " hallood";
+        //echo " hallood";
         $commentIDSafe = mysqli_real_escape_string($this->conn,$commentID);
         $query = "DELETE FROM comments WHERE idcomments = '$commentIDSafe';";
         mysqli_query($this->conn, $query);

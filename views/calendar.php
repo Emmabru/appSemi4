@@ -77,12 +77,12 @@
 	  <li>15</li>
 	  <li>16</li>
 	  <li>17</li>
-	  <li>18<a href="recipe.html"> <img src="pannkakor.jpg" alt="Pancakes" class="calendPic"></a></li>
+	  <li>18<a href="recipe.html"> <img src="/seminar-3/resources/images/pannkakor.jpg" alt="Pancakes" class="calendPic"></a></li>
 	  <li>19</li>
 	  <li>20</li>
 	  <li>21</li>
 	  <li>22</li>
-	  <li>23 <a href="recipe2.html"> <img src="kottbullar.jpg" alt="Meatballs" class="calendPic"></a></li>
+	  <li>23 <a href="recipe2.html"> <img src="/seminar-3/resources/images/kottbullar.jpg" alt="Meatballs" class="calendPic"></a></li>
 	  <li>24</li>
 	  <li>25</li>
 	  <li>26</li>

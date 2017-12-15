@@ -132,7 +132,7 @@
 		            <textarea id='comment' placeholder='Enter text here...'></textarea>
 		            <br>
 		            <br>
-		            <button type='submit' id="comment">Comment </button>
+		            <button type='submit' class= "buttoncomment" id="comment">Comment </button>
 		          </form>
 		          <?php
 		          } else {
