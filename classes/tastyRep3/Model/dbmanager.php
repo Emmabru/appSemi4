@@ -49,14 +49,14 @@ class dbmanager {
         $commentTextSafe = mysqli_real_escape_string($this->conn,$user_comment);
        
         $query = "SELECT id_user FROM user WHERE username ='".$usernameSafe."';";
-        //echo $query;
+        echo $query;
         $userid = mysqli_query($this->conn, $query);
         $userid = mysqli_fetch_assoc($userid);
         //echo "<br> DETTA " . $userid['id_user'];
         $idUser = $userid['id_user'];
         
         $query = "INSERT INTO comments (author, comment) VALUES ($idUser, '".$commentTextSafe."');";
-        //echo $query. "<br>";
+        echo $query. "<br>";
         mysqli_query($this->conn, $query);
         $idComm = $this->conn->insert_id;
         

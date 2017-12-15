@@ -6,6 +6,47 @@
 <title>Emma</title>
 <link rel="stylesheet" type="text/css" href="/seminar-3/resources/css/reset.css">
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var after_post_handler= function(data){
+    $("#comment").val("");
+    //hämtar kommentarer när man postat en ny kommentar
+    load_comments();
+  };
+  //hämtar kommentarerna
+  var load_comments=function(){
+     $.get("AjaxComment?recipe=2", 
+      function(data){
+        $("#placeholder").html(data);
+      })
+  };
+
+  $(document).ready(function()
+  {
+    load_comments();
+    //när man sickat en kommentar
+    $('#recipe_comment_form').submit(function(event)
+    {
+      event.preventDefault();
+      $.post("Meatballs", 
+      {
+        "recipeID": "2",
+        "comment": $("#comment").val()
+      }, after_post_handler);
+    });
+  });
+
+
+  $(document).on("click",".buttonremove",function(){
+      var holder=$(this).parent().parent();
+      var cid= holder.attr("data-cid");
+      $.get("Meatballs?delete="+cid, function(data){
+        holder.remove();
+      });
+    });
+</script>
+
 </head>
 
 <body>
@@ -64,31 +105,28 @@
 		 </p>
 	</div>
 
-	<div class="comments_section">
+
+	<div class=comments>
+
 	 	<h3>Comments</h3>
-	 	<div class="comment">
-	 		<div class="comment_item_head">
-		 			<div class="comment_item_name">Mamma</div>
-		 			<div class="comment_item_date">2017-11-11</div>
-	 			</div>
-	 			<div class="comment_item_body">
-	 				These are really good. I have made these several times. I usually make double and freeze them for a super quick weeknight dinner. I just throw them in in the sauce pan on low to make sure they defrost all the way through and they are done before the speg. is cooked! I have also used this same recipe to make meatloaf. Super good, easy versatile recipe!
-	 			</div>
-	 		
-	 			
-	 			<div class="comment_item_head">
-		 			<div class="comment_item_name">Pappa</div>
-		 			<div class="comment_item_date">2017-11-12</div>
-	 			</div>
-	 			<div class="comment_item_body">
-	 				These are good but you gotta have the cheese!!   --  Add a half cup grated Parmesan/Romano cheese and some parsley and you've got a deal!  (I also added an extra egg yolk).  Tender and succulent as a meatball can be. 
-	 			</div>
-	 		
-
-	 	</div>
-
-	</div>
-</section>
-
-</body>
+				<?php
+			      if ($this->session->get(Constants::USER_LOGGED_IN) !==false) {
+			        ?>
+			        <form id="recipe_comment_form" method='POST'>
+			            <textarea id='comment' placeholder='Enter text here...'></textarea>
+			            <br>
+			            <br>
+			            <button type='submit' id="comment">Comment </button>
+			          </form>
+			          <?php
+			          } else {
+			            echo "You can not comment since you are not logged in!";
+			          }
+			?>
+			<div id="placeholder">
+			  </div>
+			</div>
+		        
+		</section>
+	</body>
 </html>
